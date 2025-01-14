@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Note</title>
+<style>
+*{
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    border: 0;
+    background: rgb(36, 36, 36);
+    font-family: Arial, Helvetica, sans-serif;
+}   
+#ud-btn {
+    color: white;
+    font-size: xx-large;
+    width: 45px;
+    height: 45px;
+    margin-left: 10px;
+    cursor: pointer;
+} 
+nav{
+    border-bottom: 5px solid yellow;
+    background: rgb(36, 36, 36);
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+nav h1{
+    font-size: xx-large;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color: yellow;
+}
+nav button{
+    color: white;
+    font-size: xx-large;
+    width: 45px;
+    height: 45px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+nav button svg{
+    background: rgb(36, 36, 36);
+    border: 4px solid yellow;
+    border-radius: 100%;
+}
+#navbtn{
+    display: flex;
+    align-items: center;
+}
+#navbtn h1{
+    color: white;
+    font-size: x-large;
+}
+section{
+    margin: 10vh auto;
+}
+.note{
+    width: 80vw;
+    border-left: 5px solid yellow ;
+    box-shadow: rgb(65, 65, 65) 0px 0px 10px 0px;
+    border-start-start-radius: 15px;
+    border-end-start-radius: 15px;
+    padding: 20px;
+    padding-left: 50px;
+    margin: 30px auto;
+    display: block;
+}
+.note h1{
+    color: white;
+    font-weight: 600;
+}
+.note h4{
+    margin-top: 10px;
+    color: rgb(200, 200, 200);
+    font-weight: 100;
+}
+a{
+    text-decoration: none;
+}
+</style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div>
+                <h1>NOTE</h1>
+            </div>
+            <a href="{% url 'create' %}">
+                <div id="navbtn">
+                    <h1>ADD</h1>
+                    <button>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>                     
+                    </button>
+                    
+                </div>                
+            </a>
+
+        </nav>
+    </header>
+    <section>
+        {% for note in notes %}
+        <a href="#">
+            <div class="note">
+                <h1>{{note.title}}</h1>
+                <h4>{{ note.created_at }}</h4>
+                <a href="{% url 'edit' note.id %}" id="ud-btn"> <button> Edit</button> </a>    
+                <a href="{% url 'delete' note.id %}" id="ud-btn"> <button> Delete</button> </a>   
+            </div> 
+                   
+        </a>
+        <!-- <div class="note">
+            <h1>🎉 New Year, New Goals! 💰 Let’s Make It Happen 🎯</h1>
+            <h4>
+                💡 Mastering my skills and gearing up for opportunities 🛠️. It's time to make <br>
+                things happen and secure the bag! 🚀
+            </h4>
+        </div>
+        <div class="note">
+            <h1>🚀 Hustle Mode Activated: 2025 is My Year! 🌟</h1>
+            <h4>
+                🖌️ Crafting my talents into something remarkable 🌈. Jobs, here I come! <br>
+                The journey begins now... ✨
+            </h4>
+        </div>
+        <div class="note">
+            <h1>💸 Money Talks! Time to Work & Shine ✨</h1>
+            <h4>
+                🔥 Leveling up and showcasing what I’ve got 💼. The dream job is calling, <br>
+                and I’m answering! 📞
+            </h4>
+        </div>
+        <div class="note">
+            <h1>🌍 Changing the World, One Skill at a Time 🧠✨</h1>
+            <h4>
+                🌟 Paving the way for a brighter future ☀️. My journey to greatness <br>
+                starts today. Let’s go! 🏃‍♂️
+            </h4>
+        </div>
+        <div class="note">
+            <h1>🥂 Cheers to Growth & Success in 2025! 🌈</h1>
+            <h4>
+                🌱 Investing in myself and unlocking opportunities 🔑. It’s time to <br>
+                rise and conquer! 🏆
+            </h4>
+        </div> -->
+        {% endfor %}
+    </section>
+</body>
+</html>
